@@ -995,7 +995,7 @@ export class PublicAPIConverter {
         if (workspaceClasses && Object.keys(workspaceClasses).length > 0) {
             result.settings!.workspaceClasses = workspaceClasses;
         }
-        if (restrictedWorkspaceClasses && restrictedWorkspaceClasses.length > 0) {
+        if (restrictedWorkspaceClasses) {
             result.settings!.restrictedWorkspaceClasses = restrictedWorkspaceClasses;
         }
 
@@ -1017,7 +1017,7 @@ export class PublicAPIConverter {
         result.name = project.name;
         result.cloneUrl = project.cloneUrl;
         result.creationTime = Timestamp.fromDate(new Date(project.creationTime));
-        result.workspaceSettings = this.toWorkspaceSettings(project.settings?.workspaceClasses?.regular);
+        result.workspaceSettings = this.toWorkspaceSettings(project.settings);
         result.prebuildSettings = this.toPrebuildSettings(project.settings?.prebuilds);
         return result;
     }
@@ -1046,10 +1046,13 @@ export class PublicAPIConverter {
         return BranchMatchingStrategy.DEFAULT_BRANCH;
     }
 
-    toWorkspaceSettings(workspaceClass?: string): WorkspaceSettings {
+    toWorkspaceSettings(projectSettings: ProjectSettings | undefined): WorkspaceSettings {
         const result = new WorkspaceSettings();
-        if (workspaceClass) {
-            result.workspaceClass = workspaceClass;
+        if (projectSettings?.workspaceClasses?.regular) {
+            result.workspaceClass = projectSettings.workspaceClasses.regular;
+        }
+        if (projectSettings?.restrictedWorkspaceClasses) {
+            result.restrictedWorkspaceClasses = projectSettings.restrictedWorkspaceClasses;
         }
         return result;
     }

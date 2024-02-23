@@ -190,16 +190,13 @@ export class ConfigurationServiceAPI implements ServiceImpl<typeof Configuration
             if (req.workspaceSettings.workspaceClass !== undefined) {
                 update.workspaceSettings.workspaceClass = req.workspaceSettings.workspaceClass;
             }
-            if (req.workspaceSettings.restrictedWorkspaceClasses) {
-                if (req.workspaceSettings.updateRestrictedWorkspaceClasses) {
-                    update.workspaceSettings.restrictedWorkspaceClasses =
-                        req.workspaceSettings.restrictedWorkspaceClasses;
-                } else {
-                    throw new ApplicationError(
-                        ErrorCodes.BAD_REQUEST,
-                        "restrictedWorkspaceClasses is required with updateRestrictedWorkspaceClasses set to true",
-                    );
-                }
+            if (req.workspaceSettings.updateRestrictedWorkspaceClasses) {
+                update.workspaceSettings.restrictedWorkspaceClasses = req.workspaceSettings.restrictedWorkspaceClasses;
+            } else if (req.workspaceSettings.restrictedWorkspaceClasses.length > 0) {
+                throw new ApplicationError(
+                    ErrorCodes.BAD_REQUEST,
+                    "updateRestrictedWorkspaceClasses is required to be true to update restrictedWorkspaceClasses",
+                );
             }
         }
 

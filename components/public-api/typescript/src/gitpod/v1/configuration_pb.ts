@@ -619,7 +619,7 @@ export class UpdateConfigurationRequest_WorkspaceSettings extends Message<Update
   /**
    * restricted_workspace_classes specifies the workspace classes that are NOT allowed to be used in this configuration.
    * If empty, all workspace classes are allowed.
-   * Only update if update_allowed_workspace_classes is true.
+   * Only update if update_restricted_workspace_classes is true.
    *
    * @generated from field: repeated string restricted_workspace_classes = 2;
    */

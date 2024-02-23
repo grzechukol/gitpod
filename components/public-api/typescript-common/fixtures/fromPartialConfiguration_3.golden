@@ -9,7 +9,7 @@
             "workspaceClasses": {
                 "regular": "huge"
             },
-            "allowedWorkspaceClasses": [
+            "restrictedWorkspaceClasses": [
                 "huge",
                 "large"
             ]
