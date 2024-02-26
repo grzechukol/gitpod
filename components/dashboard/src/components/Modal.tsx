@@ -213,6 +213,24 @@ export const ModalFooter: FC<ModalFooterProps> = ({ className, alert, children }
     );
 };
 
+export const ModalFlexFooter: FC<ModalFooterProps> = ({ className, alert, children }) => {
+    return (
+        <div className="flex justify-between pt-6">
+            <div className={classNames("relative", "text-red-500")}>{alert}</div>
+            <div
+                className={classNames(
+                    // causes footer to show up on top of alert
+                    "relative",
+                    // apply the same bg and rounded corners as the modal
+                    "bg-white dark:bg-gray-900 rounded-b-xl",
+                )}
+            >
+                <div className={classNames("flex items-center justify-end space-x-2", className)}>{children}</div>
+            </div>
+        </div>
+    );
+};
+
 // Wrapper around Alert to ensure it's used correctly in a Modal
 export const ModalFooterAlert: FC<AlertProps> = ({
     closable = true,

@@ -51,22 +51,27 @@ export interface SwitchInputFieldProps extends React.ComponentPropsWithoutRef<ty
     id?: string;
     label: ReactNode;
     description?: ReactNode;
+    rightItem?: ReactNode;
 }
 
 export const SwitchInputField = React.forwardRef<React.ElementRef<typeof SwitchPrimitives.Root>, SwitchInputFieldProps>(
-    ({ className, checked, onCheckedChange, label, id, description, ...props }, ref) => {
+    ({ className, checked, onCheckedChange, title, label, id, rightItem, description, ...props }, ref) => {
+        const disabledClassName = props.disabled ? "text-pk-content-disabled" : "";
         const switchProps = {
             ...props,
             className: "",
         };
         return (
-            <div className={cn("flex gap-4", className)}>
+            <div className={cn("flex gap-4", className)} title={title}>
                 <Switch checked={checked} onCheckedChange={onCheckedChange} id={id} {...switchProps} ref={ref} />
-                <div className="flex flex-col">
-                    <label className="font-semibold cursor-pointer" htmlFor={id}>
-                        {label}
-                    </label>
-                    <TextMuted>{description}</TextMuted>
+                <div className={cn("flex w-full justify-between items-center", disabledClassName)}>
+                    <div className="flex flex-col">
+                        <label className={cn("font-semibold cursor-pointer", disabledClassName)} htmlFor={id}>
+                            {label}
+                        </label>
+                        <TextMuted className={disabledClassName}>{description}</TextMuted>
+                    </div>
+                    {rightItem}
                 </div>
             </div>
         );
