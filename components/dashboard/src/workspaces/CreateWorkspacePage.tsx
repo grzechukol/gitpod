@@ -74,7 +74,7 @@ export function CreateWorkspacePage() {
     const [selectedIde, setSelectedIde, selectedIdeIsDirty] = useDirtyState(defaultIde);
     const defaultWorkspaceClass = props.workspaceClass ?? orgWorkspaceClasses?.find((e) => e.isDefault)?.id;
     const [selectedWsClass, setSelectedWsClass, selectedWsClassIsDirty] = useDirtyState(defaultWorkspaceClass);
-    const [errorWsClass, setErrorWsClass] = useState<string | undefined>(undefined);
+    const [errorWsClass, setErrorWsClass] = useState<React.ReactNode | undefined>(undefined);
     const [contextURL, setContextURL] = useState<string | undefined>(
         StartWorkspaceOptions.parseContextUrl(location.hash),
     );
