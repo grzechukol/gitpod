@@ -7,7 +7,7 @@
 import { FC } from "react";
 // import { ConfigurationWorkspaceSizeOptions } from "./workspaces/WorkpaceSizeOptions";
 import { Configuration } from "@gitpod/public-api/lib/gitpod/v1/configuration_pb";
-import { ConfigurationWorkspaceClassesOptions } from "./workspaces/WorkspaceClassesOptions";
+import { ConfigurationWorkspaceClassesOptions } from "./workspaces/ConfigurationWorkspaceClassesOptions";
 
 type Props = {
     configuration: Configuration;
