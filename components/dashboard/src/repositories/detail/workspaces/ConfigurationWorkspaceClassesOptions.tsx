@@ -47,15 +47,13 @@ export const ConfigurationWorkspaceClassesOptions = ({ configuration }: { config
     return (
         <ConfigurationSettingsField>
             <Heading3>Available workspace classes</Heading3>
-            <Subheading className=" text-pk-content-tertiary">
-                Limit the available workspace classes for this repository.
-            </Subheading>
+            <Subheading>Limit the available workspace classes for this repository.</Subheading>
 
             <div className="mt-4">
                 {allowedClassesInConfiguration.length === 0 ? (
-                    <div className="font-semibold text-pk-content-primary flex">
+                    <div className="font-semibold text-pk-content-primary flex gap-2 items-center">
                         <AlertTriangleIcon size={20} className="text-red-500" />
-                        <span> This project doesn't have any available workspace classes set.</span>
+                        <span>This project doesn't have any available workspace classes set.</span>
                     </div>
                 ) : (
                     <WorkspaceClassesOptions

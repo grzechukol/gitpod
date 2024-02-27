@@ -24,16 +24,16 @@ export const WorkspaceClassesOptions = (props: {
     return (
         <div className={cn("space-y-2", props.className)}>
             {props.classes.map((cls) => (
-                <div className="flex gap-2">
+                <div className="flex gap-2 items-center">
                     <CpuIcon size={20} />
                     <div>
                         <span className="font-medium text-pk-content-primary">{cls.displayName}</span>
                         <MiddleDot />
-                        <span className=" text-pk-content-secondary">{cls.description}</span>
+                        <span className="text-pk-content-primary">{cls.description}</span>
                         {props.defaultClass === cls.id && (
                             <>
-                                <MiddleDot />
-                                <span className=" text-pk-content-tertiary">Default</span>
+                                <MiddleDot className="text-pk-content-tertiary" />
+                                <span className="text-pk-content-tertiary">default</span>
                             </>
                         )}
                     </div>
