@@ -439,6 +439,7 @@ export function CreateWorkspacePage() {
 
                     <InputField error={errorWsClass}>
                         <SelectWorkspaceClassComponent
+                            selectedConfigurationId={selectedProjectID}
                             onSelectionChange={setSelectedWsClass}
                             setError={setErrorWsClass}
                             selectedWorkspaceClass={selectedWsClass}
